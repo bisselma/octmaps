@@ -8,7 +8,7 @@ from setuptools import find_packages, setup
 
 __author__ = """Ben Isselmann"""
 __email__ = "ben.isselmann@gmail.com"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 
 #with open("README.rst") as readme_file:
@@ -38,6 +38,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
     description="The Python package for generating 2D Data based on oct imaging for ophthalmology.",
     install_requires=requirements,
