@@ -250,41 +250,4 @@ class OctMaps:
             file_obj = path, 
             version = None,
             layer_maps = layer
-    )     
-    
-if __name__ == '__main__':
-    
-
-    
-    
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    )      
