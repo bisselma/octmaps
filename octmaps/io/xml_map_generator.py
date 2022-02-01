@@ -4,7 +4,7 @@ from typing import IO, Union
 import os 
 from eyepy.io.heyex import HeyexVolReader
 from eyepy.io.heyex import HeyexXmlReader
-import config
+import octmaps.io.config
 import numpy as np
 import eyepy as ep
 import cv2
