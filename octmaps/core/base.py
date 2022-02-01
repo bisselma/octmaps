@@ -57,12 +57,12 @@ class LayerMaps:
 			except FileNotFoundError:
 				print("filename: " +  file_obj + " not exist")
 	
-	self.version = version
-	self.layer_name = layer_name
-	self.max_intensity_map = max_intensity_map
-	self.mean_intensity_map = mean_intensity_map
-	self.min_intensity_map = min_intensity_map
-	self.thickness_map = thickness_map
+		self.version = version
+		self.layer_name = layer_name
+		self.max_intensity_map = max_intensity_map
+		self.mean_intensity_map = mean_intensity_map
+		self.min_intensity_map = min_intensity_map
+		self.thickness_map = thickness_map
 	
 	
 	@classmethod
