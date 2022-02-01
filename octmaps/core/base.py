@@ -2,16 +2,14 @@
 from pathlib import Path
 from typing import IO, Union
 import os 
-from eyepy.io.heyex import HeyexVolReader
-
-import numpy as np
 import eyepy as ep
-import cv2
+from eyepy.io.heyex import HeyexVolReader
+import numpy as np
+
 from pathlib import Path, PosixPath
 import matplotlib.pyplot as plt
 import sys
-sys.path.insert(0,'E:\\benis\\Documents\\Arbeit\\Arbeit\\Augenklinik\\git_workspace\\enface_maps\\octmaps\\io\\')
-import vol_map_generator, xml_map_generator, config
+from octmaps.io import vol_map_generator, xml_map_generator, config
 
 from collections.abc import MutableMapping
 from pathlib import Path
@@ -256,12 +254,7 @@ class OctMaps:
     
 if __name__ == '__main__':
     
-    path = "E:\\benis\\Documents\\Arbeit\\Arbeit\\Augenklinik\\git_workspace\\enface_maps\\test_data\\xml\\"
-    file_name = "A3307240.xml"
-    path_vol = "E:\\benis\\Documents\\Arbeit\\Arbeit\\Augenklinik\\git_workspace\\enface_maps\\test_data\\vol\\"
-    file_name_vol = "101079_L_LEAD_Study1312.vol"
-    #maps = OctMaps.creat_maps_from_heyex_xml(path + file_name)
-    OctMaps.write_maps_from_heyex_xml(path + file_name, target=None)
+
     
     
     
