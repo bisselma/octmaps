@@ -194,7 +194,7 @@ class OctMaps:
 			if layer in config.MEMBRAN:
 				# min intensity map
 				im = Image.fromarray(l.min_intensity_map)
-				im.save(target + l.layer_name + '_min_intensity_map.tif')				
+				im.save(target + l.layer_name + '_intensity_map.tif')				
 			else:
 				# thickness map
 				im = Image.fromarray(l.thickness_map)
@@ -244,7 +244,7 @@ class OctMaps:
 			if layer in config.MEMBRAN:
 				# min intensity map
 				im = Image.fromarray(l.min_intensity_map)
-				im.save(target + l.layer_name + '_min_intensity_map.tif')				
+				im.save(target + l.layer_name + '_intensity_map.tif')				
 			else:
 				# thickness map
 				im = Image.fromarray(l.thickness_map)
