@@ -55,9 +55,11 @@ class HeyexXmlMapsGenerator:
             if layer_name == "ONL":
                 layer_name = "ELM"
                 upper_layer_name = "OPL"
-            else:
-                layer_name = "RPE"
+            elif layer_name == "RPE":
                 upper_layer_name = "PR2"
+            else:
+                layer_name = "BM"
+                upper_layer_name = "ILM"
         else:
             upper_layer_name = self.layer_order[[x for x in range(0,len(self.layer_order)) if self.layer_order[x] == layer_name][0]-1]
         for bscan, row in zip(reversed(self.oct), thickness_map):   

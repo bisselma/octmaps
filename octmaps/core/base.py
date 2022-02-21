@@ -230,21 +230,31 @@ class OctMaps:
 		for layer_name in name_list:
 			l = LayerMaps.from_heyex_xml(layer_name, path)
 
-			# thickness map
-			im = Image.fromarray(l.thickness_map)
-			im.save(target + l.layer_name + '_thickness_map.tif')
-			# max intensity map
-			im = Image.fromarray(l.max_intensity_map)
-			im.save(target + l.layer_name + '_max_intensity_map.tif')
-			# mean intensity map
-			im = Image.fromarray(l.mean_intensity_map)
-			im.save(target + l.layer_name + '_mean_intensity_map.tif')
-			# min intensity map
-			im = Image.fromarray(l.min_intensity_map)
-			im.save(target + l.layer_name + '_min_intensity_map.tif')
+			if layer in config.MEMBRAN:
+				# min intensity map
+				im = Image.fromarray(l.min_intensity_map)
+				im.save(target + l.layer_name + '_min_intensity_map.tif')				
+			else:
+				# thickness map
+				im = Image.fromarray(l.thickness_map)
+				im.save(target + l.layer_name + '_thickness_map.tif')
+				# max intensity map
+				im = Image.fromarray(l.max_intensity_map)
+				im.save(target + l.layer_name + '_max_intensity_map.tif')
+				# mean intensity map
+				im = Image.fromarray(l.mean_intensity_map)
+				im.save(target + l.layer_name + '_mean_intensity_map.tif')
+				# min intensity map
+				im = Image.fromarray(l.min_intensity_map)
+				im.save(target + l.layer_name + '_min_intensity_map.tif')
 		
 			layer.append(l)
-		
+			
+		# retinal thickness
+		l = LayerMaps.from_heyex_xml("FULLRET", path)
+		im = Image.fromarray(l.thickness_map)
+		im.save(target + l.layer_name + '_thickness_map.tif')
+
 		return cls(
 			layer_name_list = name_list,
 			file_obj = path, 
