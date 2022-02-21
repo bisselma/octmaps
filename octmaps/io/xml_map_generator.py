@@ -68,7 +68,6 @@ class HeyexXmlMapsGenerator:
         
         thickness_map = cv2.resize(thickness_map, dsize=(self.oct_sizeX, self.oct_sizeY), interpolation=cv2.INTER_CUBIC)
 
-        print(self.oct_sizeZ)
         return thickness_map * self.oct_sizeZ
 
 
