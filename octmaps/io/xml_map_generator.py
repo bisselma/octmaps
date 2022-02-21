@@ -49,9 +49,8 @@ class HeyexXmlMapsGenerator:
         
         thickness_map =  np.zeros((self.num_bscans, self.oct_sizeX), dtype=float) 
         
-        if layer_name in self.membran:
-            return cv2.resize(thickness_map +1, dsize=(self.oct_sizeX, self.oct_sizeY), interpolation=cv2.INTER_CUBIC) # mebran have thickness = 1
-        elif layer_name in self.special_order:
+
+        if layer_name in self.special_order:
             if layer_name == "ONL":
                 layer_name = "ELM"
                 upper_layer_name = "OPL"
