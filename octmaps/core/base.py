@@ -189,7 +189,7 @@ class OctMaps:
 		
 		layer = []
 		for layer_name in name_list:
-			l = LayerMaps.from_heyex_xml(layer_name, path)
+			l = LayerMaps.from_heyex_vol(layer_name, path)
 
 			if layer in config.MEMBRAN:
 				# min intensity map
@@ -212,7 +212,7 @@ class OctMaps:
 			layer.append(l)
 			
 		# retinal thickness
-		l = LayerMaps.from_heyex_xml("FULLRET", path)
+		l = LayerMaps.from_heyex_vol("FULLRET", path)
 		im = Image.fromarray(l.thickness_map)
 		im.save(target + l.layer_name + '_thickness_map.tif')
 		layer.append(l)
