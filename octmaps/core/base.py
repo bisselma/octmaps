@@ -32,7 +32,7 @@ class LayerMaps:
 		max_intensity_map = None,
 		mean_intensity_map = None,
 		min_intensity_map = None,
-		thickness_map = None,            
+		thickness_map = None,	            
 		*args,
 		**kwargs
 	):

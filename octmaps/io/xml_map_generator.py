@@ -78,7 +78,7 @@ class HeyexXmlMapsGenerator:
         def get_max_intensity(scan, upper_layer, lower_layer):
             line = np.zeros((1, self.oct_sizeX)).astype(float)
             for idx in range(0 ,self.oct_sizeX):
-                if not (np.isnan(upper_layer[idx]) and np.isnan(lower_layer[idx])):
+                if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.max(scan[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
             return line
         
@@ -112,7 +112,7 @@ class HeyexXmlMapsGenerator:
         def get_mean_intensity(bscan, upper_layer, lower_layer):
             line = np.zeros((1, self.oct_sizeX))
             for idx in range(0 ,self.oct_sizeX):
-                if not (np.isnan(upper_layer[idx]) and np.isnan(lower_layer[idx])):
+                if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.mean(bscan[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
             return line
         
@@ -146,7 +146,7 @@ class HeyexXmlMapsGenerator:
             line = np.zeros((1, self.oct_sizeX))
 
             for idx in range(0 ,self.oct_sizeX):
-                if not (np.isnan(upper_layer[idx]) and np.isnan(lower_layer[idx])):
+                if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.min(bscan[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
             return line
         

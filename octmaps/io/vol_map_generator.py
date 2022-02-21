@@ -79,7 +79,7 @@ class HeyexVolMapsGenerator:
             b = np.copy(bscan)
             b[b >= 3.40282e+38] = 0.
             for idx in range(0 ,self.oct_sizeX):
-                if not (np.isnan(upper_layer[idx]) and np.isnan(lower_layer[idx])):
+                if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.max(b[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
             return line
         
@@ -115,7 +115,7 @@ class HeyexVolMapsGenerator:
             b = np.copy(bscan)
             b[b >= 3.40282e+38] = 0.
             for idx in range(0 ,self.oct_sizeX):
-                if not (np.isnan(upper_layer[idx]) and np.isnan(lower_layer[idx])):
+                if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.mean(b[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
             return line
         
@@ -150,7 +150,7 @@ class HeyexVolMapsGenerator:
             b = np.copy(bscan)
             b[b >= 3.40282e+38] = 0.
             for idx in range(0 ,self.oct_sizeX):
-                if not (np.isnan(upper_layer[idx]) and np.isnan(lower_layer[idx])):
+                if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.min(b[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
             return line
         
