@@ -34,6 +34,7 @@ class HeyexVolMapsGenerator:
         self.oct_width = self.oct._meta["ScaleX"] * self.oct_sizeX
         self.oct_sizeY = round((self.oct_height/self.oct_width)*self.oct_sizeX)
         self.num_bscans = self.oct._meta["NumBScans"]
+        self.oct_sizeZ = self.oct._meta["ScaleY"] # z in mm
         
         
         self.layer_order = config.SEG_MAPPING_ORDER
@@ -66,7 +67,7 @@ class HeyexVolMapsGenerator:
         thickness_map = cv2.resize(thickness_map, dsize=(self.oct_sizeX, self.oct_sizeY), interpolation=cv2.INTER_CUBIC)
 
         
-        return thickness_map
+        return thickness_map * self.oct_sizeZ
 
 
   
