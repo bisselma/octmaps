@@ -78,7 +78,7 @@ class HeyexVolMapsGenerator:
         def get_max_intensity(bscan, upper_layer, lower_layer):
             line = np.zeros((1, self.oct_sizeX))
             b = np.copy(bscan)
-            #b[b >= 3.40282e+38] = 0.
+            b[b >= 3.40282e+38] = 0.
             for idx in range(0 ,self.oct_sizeX):
                 if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.nanmax(b[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
@@ -115,7 +115,7 @@ class HeyexVolMapsGenerator:
         def get_mean_intensity(bscan, upper_layer, lower_layer):
             line = np.zeros((1, self.oct_sizeX))
             b = np.copy(bscan)
-            #b[b >= 3.40282e+38] = 0.
+            b[b >= 3.40282e+38] = 0.
             for idx in range(0 ,self.oct_sizeX):
                 if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.nanmean(b[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])
@@ -151,7 +151,7 @@ class HeyexVolMapsGenerator:
         def get_min_intensity(bscan, upper_layer, lower_layer):
             line = np.zeros((1, self.oct_sizeX))
             b = np.copy(bscan)
-            #b[b >= 3.40282e+38] = 0.
+            b[b >= 3.40282e+38] = 0.
             for idx in range(0 ,self.oct_sizeX):
                 if not (np.isnan(upper_layer[idx]) or np.isnan(lower_layer[idx])):
                     line[0,idx] = np.nanmin(b[round(upper_layer[idx])-1:round(lower_layer[idx]),idx])

@@ -177,7 +177,6 @@ class OctMaps:
 
 	@classmethod
 	def write_maps_from_heyex_vol(cls, path, target=None, *args):
-
 	
 		if not target:
 			target = ""
