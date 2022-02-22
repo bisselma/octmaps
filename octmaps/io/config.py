@@ -26,7 +26,8 @@ MEMBRAN = [
 
 SPECIAL_ORDER = [
     "RPE",
-    "ONL" 
+    "ONL",
+    "FULLRET"
 ]
     
 
