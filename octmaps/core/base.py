@@ -191,7 +191,7 @@ class OctMaps:
 		for layer_name in name_list:
 			l = LayerMaps.from_heyex_vol(layer_name, path)
 
-			if layer in config.MEMBRAN:
+			if layer_name in config.MEMBRAN:
 				# min intensity map
 				im = Image.fromarray(l.min_intensity_map)
 				im.save(target + l.layer_name + '_intensity_map.tif')				
@@ -241,7 +241,7 @@ class OctMaps:
 		for layer_name in name_list:
 			l = LayerMaps.from_heyex_xml(layer_name, path)
 
-			if layer in config.MEMBRAN:
+			if layer_name in config.MEMBRAN:
 				# min intensity map
 				im = Image.fromarray(l.min_intensity_map)
 				im.save(target + l.layer_name + '_intensity_map.tif')				
