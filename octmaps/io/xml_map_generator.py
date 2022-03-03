@@ -29,7 +29,7 @@ class HeyexXmlMapsGenerator:
                 print("filename: " +  file_obj + " not exist")
                 
         # ID data
-        self.pids = [str(self.oct._meta["PID"]), str(self.oct._meta["VID"])]     
+        self.ids = [str(self.oct._meta["PID"]), str(self.oct._meta["VID"])]     
        
         
         # scanfield 
