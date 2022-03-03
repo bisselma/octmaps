@@ -28,6 +28,8 @@ class HeyexXmlMapsGenerator:
             except FileNotFoundError:
                 print("filename: " +  file_obj + " not exist")
                 
+        # ID data
+        self.pids = [self.oct._meta["PID"], self.oct._meta["VID"]]     
        
         
         # scanfield 

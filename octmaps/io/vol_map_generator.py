@@ -26,7 +26,8 @@ class HeyexVolMapsGenerator:
             except FileNotFoundError:
                 print("filename: " +  file_obj + " not exist")
                 
-       
+        # ID data
+        self.pids = [self.oct._meta["PID"], self.oct._meta["VID"]]
         
         # scanfield 
         self.oct_height = self.oct._meta["Distance"] * (self.oct._meta["NumBScans"]-1)
@@ -40,6 +41,7 @@ class HeyexVolMapsGenerator:
         self.layer_order = config.SEG_MAPPING_ORDER
         self.membran = config.MEMBRAN
         self.special_order = config.SPECIAL_ORDER
+
     
 
     def get_thickness_map(self, layer_name):
