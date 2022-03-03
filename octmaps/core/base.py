@@ -244,10 +244,16 @@ class OctMaps:
 	
 	@classmethod
 	def write_maps_from_heyex_xml(cls, path, target=None, *args):
-
 	
-		if not target:
-			target = "xml_"
+		# get all data in origin folder by .vol 
+		id_list = []
+		dir_list = os.listdir(path)
+		for dir in dir_list:
+			full_path = os.path.join(path, dir)
+			if os.path.isfile(full_path):
+				if dir.endswith(".xml"):
+					id_list.append(dir)
+
 	
 		if not args:
 			name_list = config.SEG_MAPPING_ORDER
@@ -255,27 +261,39 @@ class OctMaps:
 			name_list = args[0]
 		
 		layer = []
-		for layer_name in name_list:
-			l = LayerMaps.from_heyex_xml(layer_name, path)
 
-			if layer_name in config.MEMBRAN:
-				# min intensity map
-				im = Image.fromarray(l.min_intensity_map)
-				im.save(target + l.layer_name + '_intensity_map.tif')				
-			else:
-				# thickness map
-				im = Image.fromarray(l.thickness_map)
-				im.save(target + l.layer_name + '_thickness_map.tif')
-				# max intensity map
-				im = Image.fromarray(l.max_intensity_map)
-				im.save(target + l.layer_name + '_max_intensity_map.tif')
-				# mean intensity map
-				im = Image.fromarray(l.mean_intensity_map)
-				im.save(target + l.layer_name + '_mean_intensity_map.tif')
-				# min intensity map
-				im = Image.fromarray(l.min_intensity_map)
-				im.save(target + l.layer_name + '_min_intensity_map.tif')
+		for ids in id_list:
+
+			for layer_name in name_list:
+				l = LayerMaps.from_heyex_xml(layer_name, path + "\\" + ids)
+
+				if not os.path.isdir(target + "\\" + l.ids[0] + "_" + l.ids[1]):
+					os.makedirs(target + "\\" + l.ids[0] + "_" + l.ids[1])
+				
+				if layer_name in config.MEMBRAN:
+					# min intensity map
+					im = Image.fromarray(l.min_intensity_map)
+					im.save(target + "\\" + l.ids[0] + "_" + l.ids[1] + "\\" + l.layer_name + '_intensity_map.tif')				
+				else:
+					# thickness map
+					im = Image.fromarray(l.thickness_map)
+					im.save(target + "\\" + l.ids[0] + "_" + l.ids[1] + "\\" + l.layer_name + '_thickness_map.tif')
+					# max intensity map
+					im = Image.fromarray(l.max_intensity_map)
+					im.save(target + "\\" + l.ids[0] + "_" + l.ids[1] + "\\" + l.layer_name + '_max_intensity_map.tif')
+					# mean intensity map
+					im = Image.fromarray(l.mean_intensity_map)
+					im.save(target + "\\" + l.ids[0] + "_" + l.ids[1] + "\\" + l.layer_name + '_mean_intensity_map.tif')
+					# min intensity map
+					im = Image.fromarray(l.min_intensity_map)
+					im.save(target + "\\" + l.ids[0] + "_" + l.ids[1] + "\\" + l.layer_name + '_min_intensity_map.tif')
 		
+				layer.append(l)
+			
+			# retinal thickness
+			l = LayerMaps.from_heyex_xml("FULLRET", path + "\\" + ids)
+			im = Image.fromarray(l.thickness_map)
+			im.save(target + "\\" + l.ids[0] + "_" + l.ids[1] + "\\" + l.layer_name + '_thickness_map.tif')
 			layer.append(l)
 			
 		# retinal thickness
