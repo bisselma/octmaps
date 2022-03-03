@@ -27,7 +27,7 @@ class HeyexVolMapsGenerator:
                 print("filename: " +  file_obj + " not exist")
                 
         # ID data
-        self.ids = [self.oct._meta["PID"], self.oct._meta["VID"]]
+        self.ids = [str(self.oct._meta["PID"]),str(self.oct._meta["VID"])]
         
         # scanfield 
         self.oct_height = self.oct._meta["Distance"] * (self.oct._meta["NumBScans"]-1)
