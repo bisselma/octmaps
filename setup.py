@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 __author__ = """Ben Isselmann"""
 __email__ = "ben.isselmann@gmail.com"
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 
 #with open("README.rst") as readme_file:
@@ -15,7 +15,7 @@ __version__ = "0.2.2"
 #with open("HISTORY.rst") as history_file:
  #   history = history_file.read()
 
-requirements = ["eyepie", "numpy", "opencv-python", "opencv-python-headless", "Pillow"]
+requirements = ["eyepie==0.3.7", "numpy", "opencv-python", "opencv-python-headless", "Pillow"]
 
 setup_requirements = ["pytest-runner"]
 
