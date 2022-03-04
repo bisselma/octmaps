@@ -186,7 +186,8 @@ class OctMaps:
 
 		# get all data in origin folder by .vol 
 		if ".vol" in path:
-			id_list = path.split("\\")[-1]
+			id_list = [path.split("\\")[-1]]
+			path = path.split("\\")[:-1]
 		else:	
 			id_list = []
 			dir_list = os.listdir(path)
@@ -251,7 +252,8 @@ class OctMaps:
 	
 		# get all data in origin folder by .xml
 		if ".xml" in path:
-			id_list = path.split("\\")[-1]
+			id_list = [path.split("\\")[-1]]
+			path = path.split("\\")[:-1]
 		else:	
 			id_list = []
 			dir_list = os.listdir(path)
