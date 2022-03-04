@@ -186,7 +186,7 @@ class OctMaps:
 
 		# get all data in origin folder by .vol 
 		if ".vol" in path:
-			id_list = path
+			id_list = path.split("\\")[-1]
 		else:	
 			id_list = []
 			dir_list = os.listdir(path)
@@ -250,13 +250,16 @@ class OctMaps:
 	def write_maps_from_heyex_xml(cls, path, target=None, *args):
 	
 		# get all data in origin folder by .xml
-		id_list = []
-		dir_list = os.listdir(path)
-		for dir in dir_list:
-			full_path = os.path.join(path, dir)
-			if os.path.isfile(full_path):
-				if dir.endswith(".xml"):
-					id_list.append(dir)
+		if ".xml" in path:
+			id_list = path.split("\\")[-1]
+		else:	
+			id_list = []
+			dir_list = os.listdir(path)
+			for dir in dir_list:
+				full_path = os.path.join(path, dir)
+				if os.path.isfile(full_path):
+					if dir.endswith(".xml"):
+						id_list.append(dir)
 
 	
 		if not args:
