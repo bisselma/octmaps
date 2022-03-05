@@ -186,16 +186,16 @@ class OctMaps:
 
 		# get all data in origin folder by .vol 
 		if ".vol" in path:
-			id_list = [path.split("\\")[-1]]
-			path = path[:-(len(id_list[0]) + 1)]
+			id_list = [path]
 		else:	
 			id_list = []
 			dir_list = os.listdir(path)
 			for dir in dir_list:
 				full_path = os.path.join(path, dir)
-				if os.path.isfile(full_path):
-					if dir.endswith(".vol"):
-						id_list.append(dir)
+				if os.path.isdir(full_path):
+					dir_list.extend(os.path.join(dir, subfolder) for subfolder in os.listdir(full_path))
+				if os.path.isfile(full_path) and full_path.endswith(".vol"):
+					id_list.append(full_path)
 
 	
 		if not args:
@@ -252,16 +252,16 @@ class OctMaps:
 	
 		# get all data in origin folder by .xml
 		if ".xml" in path:
-			id_list = [path.split("\\")[-1]]
-			path = path[:-(len(id_list[0]) + 1)]
+			id_list = [path]
 		else:	
 			id_list = []
 			dir_list = os.listdir(path)
 			for dir in dir_list:
 				full_path = os.path.join(path, dir)
-				if os.path.isfile(full_path):
-					if dir.endswith(".xml"):
-						id_list.append(dir)
+				if os.path.isdir(full_path):
+					dir_list.extend(os.path.join(dir, subfolder) for subfolder in os.listdir(full_path))
+				if os.path.isfile(full_path) and full_path.endswith(".xml"):
+					id_list.append(full_path)
 
 	
 		if not args:
