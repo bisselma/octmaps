@@ -38,7 +38,7 @@ class HeyexXmlMapsGenerator:
         self.oct_width = float(self.reader.xml_root[0].find(".//OCTFieldSize/Width").text)
         self.oct_sizeY = round((self.oct_height/self.oct_width)*self.oct_sizeX)
         self.num_bscans = self.reader.oct_meta["NumBScans"]
-        self.oct_sizeZ = self.oct._meta["ScaleZ"] # z in mm
+        self.oct_sizeZ = self.oct._meta["ScaleZ"] * 1e3 # z in um
        
         
         self.layer_order = config.SEG_MAPPING_ORDER
