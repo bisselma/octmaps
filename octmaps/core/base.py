@@ -206,37 +206,37 @@ class OctMaps:
 		layer = []
 
 		for ids in id_list:
-
+			folder_name = ids.split("\\")[-1].split(".")[0]
 			for layer_name in name_list:
 				l = LayerMaps.from_heyex_vol(layer_name, ids)
-
-				if not os.path.isdir(os.path.join(target, l.ids[0] + "_" + l.ids[1])):
-					os.makedirs(os.path.join(target, l.ids[0] + "_" + l.ids[1]))
+				
+				if not os.path.isdir(os.path.join(target, folder_name)):
+					os.makedirs(os.path.join(target, folder_name))
 				
 				if layer_name in config.MEMBRAN:
 					# min intensity map
 					im = Image.fromarray(l.min_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_intensity_map.tif'))				
+					im.save(os.path.join(target, folder_name, l.layer_name + '_intensity_map.tif'))				
 				else:
 					# thickness map
 					im = Image.fromarray(l.thickness_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_thickness_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_thickness_map.tif'))
 					# max intensity map
 					im = Image.fromarray(l.max_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_max_intensity_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_max_intensity_map.tif'))
 					# mean intensity map
 					im = Image.fromarray(l.mean_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_mean_intensity_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_mean_intensity_map.tif'))
 					# min intensity map
 					im = Image.fromarray(l.min_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_min_intensity_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_min_intensity_map.tif'))
 		
 				layer.append(l)
 			
 			# retinal thickness
 			l = LayerMaps.from_heyex_vol("FULLRET",ids)
 			im = Image.fromarray(l.thickness_map)
-			im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_thickness_map.tif'))
+			im.save(os.path.join(target, folder_name, l.layer_name + '_thickness_map.tif'))
 			layer.append(l)
 		
 		return cls(
