@@ -181,7 +181,7 @@ class OctMaps:
 	)        
 
 	@classmethod
-	def write_maps_from_heyex_vol(cls, path, target=None, named_by=None, *args):
+	def write_maps_from_heyex_vol(cls, path, target, named_by, *args):
 
 
 		# get all data in origin folder by .vol 
@@ -255,7 +255,7 @@ class OctMaps:
 	
 	
 	@classmethod
-	def write_maps_from_heyex_xml(cls, path, target=None, named_by=None, *args):
+	def write_maps_from_heyex_xml(cls, path, target, named_by, *args):
 	
 		# get all data in origin folder by .xml
 		if ".xml" in path:
