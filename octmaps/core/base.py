@@ -181,7 +181,7 @@ class OctMaps:
 	)        
 
 	@classmethod
-	def write_maps_from_heyex_vol(cls, path, target=None, *args):
+	def write_maps_from_heyex_vol(cls, path, target=None, named_by=None, *args):
 
 
 		# get all data in origin folder by .vol 
@@ -197,8 +197,9 @@ class OctMaps:
 				if os.path.isfile(full_path) and full_path.endswith(".vol"):
 					id_list.append(full_path)
 
+
 	
-		if not args:
+		if  args:
 			name_list = config.SEG_MAPPING_ORDER
 		else:
 			name_list = args[0]
@@ -206,9 +207,15 @@ class OctMaps:
 		layer = []
 
 		for ids in id_list:
-			folder_name = ids.split("\\")[-1].split(".")[0]
+
 			for layer_name in name_list:
 				l = LayerMaps.from_heyex_vol(layer_name, ids)
+
+				if named_by:
+					if named_by == "filename":
+						folder_name = ids.split("\\")[-1].split(".")[0]
+					if named_by == "id":
+						folder_name = l.ids[0]
 				
 				if not os.path.isdir(os.path.join(target, folder_name)):
 					os.makedirs(os.path.join(target, folder_name))
@@ -248,7 +255,7 @@ class OctMaps:
 	
 	
 	@classmethod
-	def write_maps_from_heyex_xml(cls, path, target=None, *args):
+	def write_maps_from_heyex_xml(cls, path, target=None, named_by=None, *args):
 	
 		# get all data in origin folder by .xml
 		if ".xml" in path:
@@ -276,33 +283,39 @@ class OctMaps:
 			for layer_name in name_list:
 				l = LayerMaps.from_heyex_xml(layer_name, ids)
 
-				if not os.path.isdir(os.path.join(target, l.ids[0] + "_" + l.ids[1])):
-					os.makedirs(os.path.join(target, l.ids[0] + "_" + l.ids[1]))
+				if named_by:
+					if named_by == "filename":
+						folder_name = ids.split("\\")[-1].split(".")[0]
+					if named_by == "id":
+						folder_name = l.ids[0]
+
+				if not os.path.isdir(os.path.join(target, folder_name)):
+					os.makedirs(os.path.join(target, folder_name))
 				
 				if layer_name in config.MEMBRAN:
 					# min intensity map
 					im = Image.fromarray(l.min_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_intensity_map.tif'))				
+					im.save(os.path.join(target, folder_name, l.layer_name + '_intensity_map.tif'))				
 				else:
 					# thickness map
 					im = Image.fromarray(l.thickness_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_thickness_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_thickness_map.tif'))
 					# max intensity map
 					im = Image.fromarray(l.max_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_max_intensity_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_max_intensity_map.tif'))
 					# mean intensity map
 					im = Image.fromarray(l.mean_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_mean_intensity_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_mean_intensity_map.tif'))
 					# min intensity map
 					im = Image.fromarray(l.min_intensity_map)
-					im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_min_intensity_map.tif'))
+					im.save(os.path.join(target, folder_name, l.layer_name + '_min_intensity_map.tif'))
 		
 				layer.append(l)
-			
+		
 			# retinal thickness
 			l = LayerMaps.from_heyex_xml("FULLRET",ids)
 			im = Image.fromarray(l.thickness_map)
-			im.save(os.path.join(target, l.ids[0] + "_" + l.ids[1], l.layer_name + '_thickness_map.tif'))
+			im.save(os.path.join(target, folder_name, l.layer_name + '_thickness_map.tif'))
 			layer.append(l)
 			
 
