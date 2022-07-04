@@ -212,8 +212,8 @@ class OctMaps:
 				l = LayerMaps.from_heyex_vol(layer_name, ids)
 
 				if named_by:
-					if named_by == "filename":
-						folder_name = ids.split("\\")[-1].split(".")[0]
+					if named_by == "foldername":
+						folder_name = ids.split("\\")[-2]
 					if named_by == "id":
 						folder_name = l.ids[0]
 				
@@ -284,8 +284,8 @@ class OctMaps:
 				l = LayerMaps.from_heyex_xml(layer_name, ids)
 
 				if named_by:
-					if named_by == "filename":
-						folder_name = ids.split("\\")[-1].split(".")[0]
+					if named_by == "foldername":
+						folder_name = ids.split("\\")[-2]
 					if named_by == "id":
 						folder_name = l.ids[0]
 
@@ -327,7 +327,13 @@ class OctMaps:
 	)     
 	
 if __name__ == '__main__':
-	"""test section"""
+	
+	target = example = ""
+
+	# create maps and 
+	OctMaps.write_maps_from_heyex_xml(example, target, "foldername")
+
+
 
 
 
