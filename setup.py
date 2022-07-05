@@ -15,7 +15,7 @@ __version__ = "0.2.9"
 #with open("HISTORY.rst") as history_file:
  #   history = history_file.read()
 
-requirements = ["eyepie==0.3.7", "numpy==1.23.0", "opencv-python", "opencv-python-headless", "Pillow"]
+requirements = ["eyepie==0.3.7", "numpy==1.22.4", "opencv-python", "opencv-python-headless", "Pillow"]
 
 setup_requirements = ["pytest-runner"]
 
