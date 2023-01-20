@@ -328,10 +328,14 @@ class OctMaps:
 	
 if __name__ == '__main__':
 	
-	target = example = ""
+    target = "E:\\benis\\Documents\\Arbeit\\Arbeit\\Augenklinik\\Projekt Marlene\\Micro_Retro Vortrag\\Export ad Ben\\res"
 
-	# create maps and 
-	OctMaps.write_maps_from_heyex_xml(example, target, "foldername")
+    vol_path = "E:\\benis\\Documents\\Arbeit\\Arbeit\\Augenklinik\\Projekt Marlene\\Micro_Retro Vortrag\\Export ad Ben\\ID_124\\"
+
+    ids = "OCT_124"
+
+    # create maps and 
+    OctMaps.write_maps_from_heyex_xml(vol_path + ids, target, "foldername")
 
 
 
