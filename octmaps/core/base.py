@@ -199,7 +199,7 @@ class OctMaps:
 
 
 	
-		if  args:
+		if not args:
 			name_list = config.SEG_MAPPING_ORDER
 		else:
 			name_list = args[0]
