@@ -212,8 +212,8 @@ class OctMaps:
 				l = LayerMaps.from_heyex_vol(layer_name, ids)
 
 				if named_by:
-					if named_by == "foldername":
-						folder_name = ids.split("\\")[-2]
+					if named_by == "filename":
+						folder_name = ids.split("\\")[-1].split("_")[0] + "_" + ids.split("\\")[-1].split("_")[1]
 					if named_by == "id":
 						folder_name = l.ids[0]
 				
